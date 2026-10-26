@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Best_Products - Authorization</title>
+<style>body{font-family:Arial,sans-serif;max-width:720px;margin:40px auto;padding:0 16px;line-height:1.6}code{background:#eee;padding:8px;display:block;word-break:break-all}</style></head>
+<body>
+<h1>Best_Products</h1>
+<p id="msg">Waiting for authorization...</p>
+<code id="code"></code>
+<script>
+var p = new URLSearchParams(location.search);
+var m = document.getElementById("msg"), c = document.getElementById("code");
+if (p.get("code")) {
+  m.textContent = "Authorization successful. Copy the code below and paste it into the Best_Products app on your computer:";
+  c.textContent = p.get("code");
+} else if (p.get("error")) {
+  m.textContent = "Authorization failed: " + p.get("error") + " " + (p.get("error_description") || "");
+} else {
+  m.textContent = "This page receives the TikTok authorization result.";
+}
+</script>
+</body></html>
